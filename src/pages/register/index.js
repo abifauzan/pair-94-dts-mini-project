@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth } from "../../configs/firebase";
 
 const defaultValue = {
   email: "",
@@ -14,7 +14,9 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
+  console.log(location);
   // Handling on change input
   const handleInputChange = (value, type) => {
     setInput({

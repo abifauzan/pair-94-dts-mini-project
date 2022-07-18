@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth } from "../../configs/firebase";
+import useAuth from "../../hooks/useAuth";
 
 const defaultValue = {
   email: "",
@@ -14,6 +15,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Handling on change input
   const handleInputChange = (value, type) => {
@@ -61,6 +63,15 @@ const Login = () => {
       <div>
         <hr />
         <button type="submit">Login</button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/register", { state: { from: "login" } });
+            // navigate("/register");
+          }}
+        >
+          Register
+        </button>
         <hr />
       </div>
       <div>{errorMessage}</div>
