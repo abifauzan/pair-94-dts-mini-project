@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./configs/privateRoute";
 
 function App() {
+  console.log("test");
   return (
     <BrowserRouter>
       <Routes>
