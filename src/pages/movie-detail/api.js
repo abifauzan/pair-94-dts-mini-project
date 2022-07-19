@@ -1,8 +1,8 @@
 import { apiRequest } from "../../configs/axios";
 
-export const getApiMovies = async (type) => {
+export const getDetailMovie = async (id) => {
   const response = await apiRequest({
-    path: type,
+    path: `/movie/${id}`,
     method: "GET",
   });
 

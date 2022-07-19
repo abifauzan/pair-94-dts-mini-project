@@ -11,8 +11,6 @@ function App() {
   const listMovies = useAppSelector((state) => state.movies);
   const dispatch = useAppDispatch();
 
-  console.log("listMovies", listMovies);
-
   const toggleTheme = () => {
     const valueTheme = theme === "dark" ? "light" : "dark";
 
@@ -20,15 +18,15 @@ function App() {
   };
 
   return (
-    <div>
+    <main className="w-full relative h-full">
       <GlobalStyles />
-      {/* <Header /> */}
+      <Header />
 
-      <button onClick={toggleTheme}>Toggle Theme</button>
+      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
       <Outlet />
 
-      <p>Theme: {theme}</p>
-    </div>
+      {/* <p>Theme: {theme}</p> */}
+    </main>
   );
 }
 

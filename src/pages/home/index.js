@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from "react";
+import Hero from "../../components/Hero";
 import { fetchNowPlayingAction } from "../../components/MovieList/_redux/now-playing/NowPlaying.action";
 import { fetchOriginalsAction } from "../../components/MovieList/_redux/originals/Originals.action";
 import { fetchPopularAction } from "../../components/MovieList/_redux/popular/Popular.action";
@@ -7,6 +8,14 @@ import { fetchTrendingAction } from "../../components/MovieList/_redux/trending/
 import { fetchUpcomingAction } from "../../components/MovieList/_redux/upcoming/Upcoming.action";
 import useAuth from "../../hooks/useAuth";
 import { useAppDispatch } from "../../redux/hooks";
+import { HomeContainer } from "./Home.style";
+
+const movie = {
+  backdrop_path: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
+  name: "Minions: The Rise of Gru",
+  overview:
+    "A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them, with the backup of his followers, the Minions",
+};
 
 const Home = () => {
   const { user } = useAuth();
@@ -26,9 +35,13 @@ const Home = () => {
   }, [fetchData]);
 
   return (
-    <div>
-      <h1 className="mt-10 bg-green-400"> Home Page</h1>
-    </div>
+    <HomeContainer>
+      <Hero movie={movie} />
+
+      <div className="mt-[500px]">
+        <h1 className="text-black text-xl">Scroll me</h1>
+      </div>
+    </HomeContainer>
   );
 };
 
