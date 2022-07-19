@@ -14,9 +14,10 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const { state = {} } = useLocation();
 
-  console.log(location);
+  console.log(state);
+
   // Handling on change input
   const handleInputChange = (value, type) => {
     setInput({
@@ -63,6 +64,15 @@ const Register = () => {
       <div>
         <hr />
         <button type="submit">Register</button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/login", { state });
+            // navigate("/register");
+          }}
+        >
+          Login
+        </button>
         <hr />
       </div>
       <div>{errorMessage}</div>

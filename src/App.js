@@ -1,48 +1,32 @@
 import React from "react";
-import HomePage from "./pages/home";
-import LoginPage from "./pages/login";
-import RegisterPage from "./pages/register";
-import MovieDetailPage from "./pages/movie-detail";
-import NotFoundPage from "./pages/not-found";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PrivateRoute from "./configs/privateRoute";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { setTheme } from "./redux/general/app";
 
 function App() {
+  const { theme } = useAppSelector((state) => state.app);
+  const listMovies = useAppSelector((state) => state.movies);
+  const dispatch = useAppDispatch();
+
+  console.log("listMovies", listMovies);
+
+  const toggleTheme = () => {
+    const valueTheme = theme === "dark" ? "light" : "dark";
+
+    dispatch(setTheme(valueTheme));
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <div className="app">
+      <Header />
 
-        <Route
-          path="login"
-          element={
-            <PrivateRoute isFromLogin>
-              <LoginPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <PrivateRoute isFromLogin>
-              <LoginPage />
-            </PrivateRoute>
-          }
-        />
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <Outlet />
 
-        <Route
-          path="movie/:slug"
-          element={
-            <PrivateRoute>
-              <MovieDetailPage />
-            </PrivateRoute>
-          }
-        />
-
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+      <p>Theme: {theme}</p>
+    </div>
   );
 }
 

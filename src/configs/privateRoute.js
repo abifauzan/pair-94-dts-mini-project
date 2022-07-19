@@ -2,22 +2,23 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-route
 import { useEffect, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../configs/firebase";
+import useAuth from "../hooks/useAuth";
 
-const PrivateRoute = ({ children, isFromLogin = false }) => {
-  const [user] = useAuthState(auth);
+const PrivateRoute = ({ children, isFromLogin = true }) => {
+  const { user, loading } = useAuth();
   const { pathname = "" } = useLocation();
 
-  // if (user && isFromLogin) return <Navigate to="/" />;
-  // else if (user && isFromLogin === false) return children;
-  // return <Navigate to="/login" state={{ from: pathname }} />;
+  if (loading) {
+    return <h1>Loading</h1>;
+  }
 
-  const render = useMemo(() => {
-    if (user && isFromLogin) return "go to home";
-    else if (user && isFromLogin === false) return "go to children";
-    return "go to login";
-  }, [user, isFromLogin]);
+  if (!user && isFromLogin) {
+    return <Navigate to="/login" state={{ from: pathname }} />;
+  }
 
-  console.log(render);
+  if (user && !isFromLogin) {
+    return <Navigate to="/" />;
+  }
 
   return children;
 };

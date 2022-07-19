@@ -15,7 +15,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const { state = {} } = useLocation();
 
   // Handling on change input
   const handleInputChange = (value, type) => {
@@ -32,7 +32,7 @@ const Login = () => {
     try {
       const sendLoginData = await signInWithEmailAndPassword(auth, input.email, input.password);
       console.log("sendLoginData", sendLoginData);
-      navigate("/");
+      navigate(state?.from || "/");
     } catch (error) {
       console.log("error", error);
       // setErrorMessage(error);
@@ -66,7 +66,7 @@ const Login = () => {
         <button
           type="button"
           onClick={() => {
-            navigate("/register", { state: { from: "login" } });
+            navigate("/register", { state });
             // navigate("/register");
           }}
         >
