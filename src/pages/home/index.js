@@ -25,7 +25,11 @@ const Home = () => {
     fetchData();
   }, [fetchData]);
 
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <h1 className="mt-10 bg-green-400"> Home Page</h1>
+    </div>
+  );
 };
 
 export default Home;

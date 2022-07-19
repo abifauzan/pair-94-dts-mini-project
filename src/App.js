@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <GlobalStyles />
-      <Header />
+      {/* <Header /> */}
 
       <button onClick={toggleTheme}>Toggle Theme</button>
       <Outlet />
