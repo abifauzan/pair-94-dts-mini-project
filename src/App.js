@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { setTheme } from "./redux/general/app";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   const { theme } = useAppSelector((state) => state.app);
@@ -19,7 +20,8 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div>
+      <GlobalStyles />
       <Header />
 
       <button onClick={toggleTheme}>Toggle Theme</button>
