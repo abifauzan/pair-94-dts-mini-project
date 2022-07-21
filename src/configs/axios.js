@@ -1,7 +1,7 @@
 import axios, { Method, AxiosRequestConfig, AxiosPromise } from "axios";
 
 const BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = "c02f0edc5789e39aa1c491cf515d8e22";
+const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
 export const endpoints = {
   originals: "/discover/tv",
