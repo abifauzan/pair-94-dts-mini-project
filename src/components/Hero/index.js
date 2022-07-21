@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { apiRequest } from "../../configs/axios";
 import { BASE_IMG_BG_URL } from "../../utils/constant";
 import { FaSpinner } from "react-icons/fa";
+import _isEmpty from "lodash/isEmpty";
 
 const Hero = ({ movie = {} }) => {
   const [logo, setLogo] = useState("");
@@ -25,18 +26,20 @@ const Hero = ({ movie = {} }) => {
       }
     };
 
-    fetchLogo();
-  }, [movie]);
+    if (movie?.id !== undefined) {
+      fetchLogo();
+    }
+  }, [movie?.id]);
+
+  if (_isEmpty(movie)) {
+    return <FaSpinner className="animate-spin" size={40} />;
+  }
 
   return (
     <MovieDetailContainer background={movie.backdrop_path}>
       <div className="absolute w-full h-52 bg-gradient-to-t from-black  to-transparent bottom-0 left-0 ring-0 z-20" />
       <div className="w-full">
         <div data-aos="fade-up" className="w-2/3">
-          {/* <h1 className=" drop-shadow-lg text-white text-4xl sm:text-6xl font-bold">
-            {movie.title}
-          </h1> */}
-
           {logo === "" ? (
             <FaSpinner className="animate-spin" size={40} />
           ) : (

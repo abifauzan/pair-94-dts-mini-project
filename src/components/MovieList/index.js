@@ -3,12 +3,13 @@ import BoxMovie from "./_components/BoxMovie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useMemo } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { FaSpinner } from "react-icons/fa";
 
 const MovieList = ({ data, label }) => {
   const movieList = useMemo(() => data?.data?.results, [data]);
 
   if (data?.loading) {
-    return <h1> Loading </h1>;
+    return <FaSpinner className="animate-spin" size={40} />;
   }
 
   return (
@@ -20,10 +21,6 @@ const MovieList = ({ data, label }) => {
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={5}
           slidesPerView="auto"
-          // onSlideChange={() => console.log("slide change")}
-          // onSwiper={(swiper) => console.log(swiper)}
-          // pagination={{ clickable: true }}
-          // scrollbar={{ draggable: true }}
           breakpoints={{
             640: {
               slidesPerView: "auto",

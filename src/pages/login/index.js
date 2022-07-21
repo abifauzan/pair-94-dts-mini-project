@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../configs/firebase";
+import { auth, provider, signInWithPopup } from "../../configs/firebase";
 import { FcGoogle } from "react-icons/fc";
 import logo from "../../assets/logo.svg";
 import Footer from "../../components/Footer";
@@ -41,6 +41,15 @@ const Login = () => {
       // setErrorMessage(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -84,7 +93,7 @@ const Login = () => {
         Register here
       </p>
       <div
-        // onClick={() => signInWithGoogle()}
+        onClick={() => signInWithGoogle()}
         className=" text-base cursor-pointer mt-5 space-x-1 flex items-center "
       >
         <p className=" underline">Sign in with Google</p> <FcGoogle className=" text-xl" />

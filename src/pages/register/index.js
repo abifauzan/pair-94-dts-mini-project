@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../configs/firebase";
-import { FcGoogle } from "react-icons/fc";
 import logo from "../../assets/logo.svg";
 import Footer from "../../components/Footer";
 const defaultValue = {
@@ -84,12 +83,6 @@ const Register = () => {
         Already have account ? <br />
         Sign in here
       </p>
-      <div
-        // onClick={() => signInWithGoogle()}
-        className=" text-base cursor-pointer mt-5 space-x-1 flex items-center "
-      >
-        <p className=" underline">Sign up with Google</p> <FcGoogle className=" text-xl" />
-      </div>
 
       <p className=" mt-10 text-xs">
         This page is protected by Google{" "}

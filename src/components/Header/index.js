@@ -47,8 +47,8 @@ const Header = () => {
           <img src={logo} alt="logo" className="logo" />
         </Link>
         <NavContainer>
-          {navList.map((item) => (
-            <Link key={item.path} to={item.path}>
+          {navList.map((item, index) => (
+            <Link key={index} to={item.path}>
               {item.label}
             </Link>
           ))}
