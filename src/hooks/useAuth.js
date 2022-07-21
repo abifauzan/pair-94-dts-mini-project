@@ -8,11 +8,15 @@ const useAuth = () => {
   const { pathname = "" } = useLocation();
   const navigate = useNavigate();
 
+  const isLogin = useMemo(() => {
+    return user ? true : false;
+  }, [user]);
+
   // useEffect(() => {
   //   if (user && isFromLogin) navigate("/");
   // }, [user, isFromLogin, navigate]);
 
-  return { user, loading, error };
+  return { user, loading, error, isLogin };
 };
 
 export default useAuth;

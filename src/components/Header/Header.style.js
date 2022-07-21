@@ -5,18 +5,21 @@ export const HeaderContainer = styled.div`
     flex
     justify-between
     items-center
-    p-4
     fixed
     w-full
     top-0
     transition-all
     z-10
     text-lg
+    bg-gradient-to-b z-50 from-black 
+    space-x-5
+    py-4
+    px-10
   `}
 
-  ${tw`md:h-[68px] md:py-10 md:px-14 md:text-lg`}
+  ${tw`md:h-[68px] md:py-10 md:px-20 md:text-lg`}
 
-  ${(props) => (props.isScroll ? tw`bg-black` : tw`backdrop-blur-sm bg-black/20`)}
+  ${(props) => (props.isScroll ? tw`bg-black` : "")}
 
   img.logo {
     ${tw`
@@ -34,6 +37,9 @@ export const HeaderContainer = styled.div`
 export const NavContainer = styled.div`
   ${tw`flex gap-2 md:gap-5 items-center text-center md:pr-2`}
 
+  a {
+    ${tw`hover:scale-105 transition-all`}
+  }
   a:not(.mobile-only) {
     ${tw`
       hidden md:block

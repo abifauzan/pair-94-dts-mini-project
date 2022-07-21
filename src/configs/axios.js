@@ -5,7 +5,7 @@ const API_KEY = "c02f0edc5789e39aa1c491cf515d8e22";
 
 export const endpoints = {
   originals: "/discover/tv",
-  trending: "/trending/all/week",
+  trending: "/trending/movie/day",
   now_playing: "/movie/now_playing",
   popular: "/movie/popular",
   top_rated: "/movie/top_rated",

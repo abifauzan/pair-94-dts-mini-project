@@ -11,6 +11,7 @@ import { fetchPopularAction } from "./components/MovieList/_redux/popular/Popula
 import { fetchTopRatedAction } from "./components/MovieList/_redux/top-rated/TopRated.action";
 import { fetchTrendingAction } from "./components/MovieList/_redux/trending/Trending.action";
 import { fetchUpcomingAction } from "./components/MovieList/_redux/upcoming/Upcoming.action";
+import Footer from "./components/Footer";
 
 function App() {
   const { theme } = useAppSelector((state) => state.app);
@@ -38,7 +39,7 @@ function App() {
   }, [fetchData, pathname]);
 
   return (
-    <main className="w-full relative h-full">
+    <main className="w-full relative h-full bg-black">
       <GlobalStyles />
       <Header />
 
@@ -46,6 +47,7 @@ function App() {
       <Outlet />
 
       {/* <p>Theme: {theme}</p> */}
+      <Footer />
     </main>
   );
 }

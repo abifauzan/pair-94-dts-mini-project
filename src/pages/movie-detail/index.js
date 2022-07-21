@@ -60,9 +60,10 @@ const MovieDetail = () => {
       </MovieDetailContainer>
 
       <Container>
-        <MovieList data={listMovies.upcoming} label="Upcoming" />
+        <MovieList data={listMovies.nowPlaying} label="Now Playing" />
+        <MovieList data={listMovies.trending} label="Trending" />
         <MovieList data={listMovies.topRated} label="Top Rated" />
-        <MovieList data={listMovies.popular} label="Popular" />
+        <MovieList data={listMovies.upcoming} label="Upcoming" />
       </Container>
     </div>
   );

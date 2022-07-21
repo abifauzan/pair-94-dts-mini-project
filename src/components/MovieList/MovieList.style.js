@@ -1,7 +1,7 @@
 import tw, { styled } from "twin.macro";
 
 export const MovieListContainer = styled.div`
-  ${tw`text-white w-full`}
+  ${tw`text-white w-full py-4`}
 
   h2 {
     ${tw`text-2xl font-semibold pb-3`}

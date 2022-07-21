@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import Container from "../../components/Container";
 import Hero from "../../components/Hero";
 import MovieList from "../../components/MovieList";
@@ -8,6 +8,7 @@ import { fetchPopularAction } from "../../components/MovieList/_redux/popular/Po
 import { fetchTopRatedAction } from "../../components/MovieList/_redux/top-rated/TopRated.action";
 import { fetchTrendingAction } from "../../components/MovieList/_redux/trending/Trending.action";
 import { fetchUpcomingAction } from "../../components/MovieList/_redux/upcoming/Upcoming.action";
+import { apiRequest } from "../../configs/axios";
 import useAuth from "../../hooks/useAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { HomeContainer } from "./Home.style";
@@ -20,6 +21,8 @@ const movie = {
 };
 
 const Home = () => {
+  const [randomMovie, setRandomMovie] = useState({});
+
   const { user } = useAuth();
   const dispatch = useAppDispatch();
   const listMovies = useAppSelector((state) => state.movies);
@@ -33,18 +36,36 @@ const Home = () => {
     dispatch(fetchUpcomingAction());
   }, [dispatch]);
 
+  const fetchRandomMovie = async () => {
+    const RandNum = Math.floor(Math.random() * 20);
+
+    const response = await apiRequest({
+      path: "/trending/movie/week",
+      method: "GET",
+    });
+
+    if (response?.data?.results?.length) {
+      setRandomMovie(response?.data?.results[RandNum]);
+    }
+  };
+
+  useEffect(() => {
+    fetchRandomMovie();
+  }, []);
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
   return (
     <HomeContainer>
-      <Hero movie={movie} />
+      <Hero movie={randomMovie} />
 
       <Container>
-        <MovieList data={listMovies.upcoming} label="Upcoming" />
+        <MovieList data={listMovies.nowPlaying} label="Now Playing" />
+        <MovieList data={listMovies.trending} label="Trending" />
         <MovieList data={listMovies.topRated} label="Top Rated" />
-        <MovieList data={listMovies.popular} label="Popular" />
+        <MovieList data={listMovies.upcoming} label="Upcoming" />
       </Container>
     </HomeContainer>
   );

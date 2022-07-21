@@ -4,6 +4,11 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      backgroundImage: {
+        welcome: "url('/public/Netflix-Background.jpg')",
+      },
+    },
     screens: {
       sm: "640px",
       md: "768px",
