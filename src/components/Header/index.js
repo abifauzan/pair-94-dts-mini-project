@@ -51,6 +51,7 @@ const Header = () => {
               {item.label}
             </Link>
           ))}
+          <button onClick={handleLogout}>Logout</button>
 
           <Link to={"#"} className="mobile-only">
             Browse

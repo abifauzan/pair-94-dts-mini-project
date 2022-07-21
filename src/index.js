@@ -13,7 +13,13 @@ import PrivateRoute from "./configs/privateRoute";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
+
 import "./tailwind.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -24,7 +30,7 @@ root.render(
             <Route path="/" element={<App />}>
               <Route path="/" element={<HomePage />} />
               <Route
-                path="movie/:slug"
+                path="movie/:movieId"
                 element={
                   <PrivateRoute>
                     <MovieDetailPage />
