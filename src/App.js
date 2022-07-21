@@ -12,6 +12,7 @@ import { fetchTopRatedAction } from "./components/MovieList/_redux/top-rated/Top
 import { fetchTrendingAction } from "./components/MovieList/_redux/trending/Trending.action";
 import { fetchUpcomingAction } from "./components/MovieList/_redux/upcoming/Upcoming.action";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { theme } = useAppSelector((state) => state.app);
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <main className="w-full relative h-full bg-black">
+      <ScrollToTop />
       <GlobalStyles />
       <Header />
 
