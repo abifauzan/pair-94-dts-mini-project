@@ -1,7 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { useEffect, useMemo } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../configs/firebase";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = ({ children, isFromLogin = true }) => {

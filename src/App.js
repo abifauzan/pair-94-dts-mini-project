@@ -2,8 +2,7 @@ import React, { useCallback, useEffect } from "react";
 
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { setTheme } from "./redux/general/app";
+import { useAppDispatch } from "./redux/hooks";
 import GlobalStyles from "./GlobalStyles";
 import { fetchNowPlayingAction } from "./components/MovieList/_redux/now-playing/NowPlaying.action";
 import { fetchOriginalsAction } from "./components/MovieList/_redux/originals/Originals.action";
@@ -15,16 +14,8 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const { theme } = useAppSelector((state) => state.app);
-  const listMovies = useAppSelector((state) => state.movies);
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-
-  const toggleTheme = () => {
-    const valueTheme = theme === "dark" ? "light" : "dark";
-
-    dispatch(setTheme(valueTheme));
-  };
 
   const fetchData = useCallback(() => {
     dispatch(fetchNowPlayingAction());
@@ -45,10 +36,8 @@ function App() {
       <GlobalStyles />
       <Header />
 
-      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
       <Outlet />
 
-      {/* <p>Theme: {theme}</p> */}
       <Footer />
     </main>
   );

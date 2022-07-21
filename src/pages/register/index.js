@@ -13,7 +13,6 @@ const defaultValue = {
 
 const Register = () => {
   const [input, setInput] = useState(defaultValue);
-  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();

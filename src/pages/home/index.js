@@ -9,21 +9,12 @@ import { fetchTopRatedAction } from "../../components/MovieList/_redux/top-rated
 import { fetchTrendingAction } from "../../components/MovieList/_redux/trending/Trending.action";
 import { fetchUpcomingAction } from "../../components/MovieList/_redux/upcoming/Upcoming.action";
 import { apiRequest } from "../../configs/axios";
-import useAuth from "../../hooks/useAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { HomeContainer } from "./Home.style";
-
-const movie = {
-  backdrop_path: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
-  name: "Minions: The Rise of Gru",
-  overview:
-    "A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them, with the backup of his followers, the Minions",
-};
 
 const Home = () => {
   const [randomMovie, setRandomMovie] = useState({});
 
-  const { user } = useAuth();
   const dispatch = useAppDispatch();
   const listMovies = useAppSelector((state) => state.movies);
 

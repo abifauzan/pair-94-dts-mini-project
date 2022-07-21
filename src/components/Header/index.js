@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 import { HeaderContainer, NavContainer, ActionContainer } from "./Header.style";
 import logo from "../../assets/logo.svg";
 import smallAvatar from "../../assets/small-avatar.png";
-import { AiOutlineMenu } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { AiFillCaretDown } from "react-icons/ai";
 import { useEffect, useState } from "react";

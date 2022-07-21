@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../configs/firebase";
-import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import logo from "../../assets/logo.svg";
 import Footer from "../../components/Footer";
@@ -16,7 +15,6 @@ const defaultValue = {
 const Login = () => {
   const [input, setInput] = useState(defaultValue);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
   const { state = {} } = useLocation();

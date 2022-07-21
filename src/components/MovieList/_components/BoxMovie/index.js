@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BASE_IMG_URL } from "../../../../utils/constant";
 import { MovieContainer, MovieInfo } from "./BoxMovie.style";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 const BoxMovie = ({ movie }) => {
   const to = `/movie/${movie.id}`;
   const navigate = useNavigate();

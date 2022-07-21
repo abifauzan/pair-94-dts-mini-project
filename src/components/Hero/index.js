@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { MovieDetailContainer } from "./Hero.style";
 import { FiInfo } from "react-icons/fi";
 import { BsPlayFill } from "react-icons/bs";
@@ -8,7 +7,6 @@ import { BASE_IMG_BG_URL } from "../../utils/constant";
 import { FaSpinner } from "react-icons/fa";
 
 const Hero = ({ movie = {} }) => {
-  const navigate = useNavigate();
   const [logo, setLogo] = useState("");
 
   useEffect(() => {
@@ -22,8 +20,6 @@ const Hero = ({ movie = {} }) => {
         const getEnVersion =
           response?.data?.logos?.filter((item) => item?.iso_639_1 === "en")[0]?.file_path ||
           response?.data?.logos[0]?.file_path;
-
-        console.log(getEnVersion);
 
         setLogo(`${BASE_IMG_BG_URL}/${getEnVersion}`);
       }

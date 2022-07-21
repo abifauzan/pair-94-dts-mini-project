@@ -1,4 +1,4 @@
-import axios, { Method, AxiosRequestConfig, AxiosPromise } from "axios";
+import axios from "axios";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = process.env.REACT_APP_TMDB_KEY;

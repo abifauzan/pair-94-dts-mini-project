@@ -1,9 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { MovieDetailContainer } from "./MovieDetail.style";
-import { BsPlayFill } from "react-icons/bs";
-import { FiInfo } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 import { getDetailMovie } from "./api";
 import { useAppSelector } from "../../redux/hooks";
 import MovieList from "../../components/MovieList";
@@ -12,9 +8,7 @@ import Hero from "../../components/Hero";
 
 const MovieDetail = () => {
   const [detail, setDetail] = useState(null);
-  const navigate = useNavigate();
   const { movieId } = useParams();
-  const { user } = useAuth();
   const listMovies = useAppSelector((state) => state.movies);
 
   const fetchDetail = useCallback(async () => {
